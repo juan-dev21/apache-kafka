@@ -1,4 +1,4 @@
-package com.jp21.apache.kafka;
+package com.jp21.apache.kafka.session01;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -10,14 +10,14 @@ import java.util.Properties;
 
 public class KafkaProducerApplication {
 
-    private static Logger log = LoggerFactory.getLogger(KafkaProducerApplication.class);
+    private final static Logger log = LoggerFactory.getLogger(KafkaProducerApplication.class);
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "localhost:9092");
-        properties.put("acks", "1"); // 0, 1, all [no ack, leader ack, all ack]
+        properties.put("acks", "all"); // 0, 1, all [no ack, leader ack, all ack]
         properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         properties.put("linger.ms", "15");
